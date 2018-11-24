@@ -6,14 +6,18 @@ import java.util.ResourceBundle;
 
 public class SantaLetterWriter {
 
-    private static final ResourceBundle i18n =
-            ResourceBundle.getBundle("lang_CA");
+    private static ResourceBundle i18n;
 
     protected static SantaLetterInfo sli = new SantaLetterInfo();
     private static Utilities ut = new Utilities();
     private static ArrayList<String> presents = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
+        if(args.length == 0)
+            i18n = ResourceBundle.getBundle("lang_EN");
+        else
+            i18n = ResourceBundle.getBundle(args[0]);
+
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
 
